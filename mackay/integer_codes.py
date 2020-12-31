@@ -260,7 +260,7 @@ def from_fibonacci2( slist ):
             pass
         else:
             import sys
-            print >> sys.stderr, "warning, illegal character `s` in from_fiboanacci"
+            print("warning, illegal character `s` in from_fiboanacci", file=sys.stderr)
             pass
         pass
     pass
@@ -375,24 +375,24 @@ def get_alpha_integer ( clist ) :
     pass
 
 def assertions():
-    print "Testing byte"
+    print("Testing byte")
     for j in range(2,7):
         for i in range(1299):
             assert from_byte(list(to_byte(i,j)),j) == i
-    print "Testing fibo"
+    print("Testing fibo")
     for i in range(1,12999):
         assert from_fibonacci2(list(to_fibonacci(i))) == i
-    print "Testing omega"
+    print("Testing omega")
     for i in range(1,12999):
         assert get_omega_integer(list(encoded_omega(i))) == i
-    print "Testing alpha"
+    print("Testing alpha")
     for i in range(1,12999):
         assert get_alpha_integer(list(encoded_alpha(i))) == i
     pass
 
 def test():
     import doctest
-    for i in range(1,24): print "%-3d%s" % ( i,to_fibonacci(i) )
+    for i in range(1,24): print("%-3d%s" % ( i,to_fibonacci(i) ))
     verbose=1
     if(verbose):
         doctest.testmod(None,None,None,True)
@@ -403,53 +403,53 @@ def test():
     pass
 
 def oldtest():
-    print "testing dec_to_bin"
+    print("testing dec_to_bin")
     testlist = ["print dec_to_bin( 17 , 9)",\
                 "print dec_to_bin( 17 , 6)",\
                 "print dec_to_bin( 17 , 5)",\
                 "print dec_to_bin( 17 , 4)"]
     for t in testlist :
-        print t
-        exec t
+        print(t)
+        exec(t)
         pass
 
-    print "\ntesting bin_to_dec"
+    print("\ntesting bin_to_dec")
     binlist = ["1001", "101010" ]
     for b in binlist :
         clist = list( b )
         length = len(clist)
-        print "\nRegular binary to decimal", b
-        print "bin_to_dec( ",clist," , ",length," , 0 )"
+        print("\nRegular binary to decimal", b)
+        print("bin_to_dec( ",clist," , ",length," , 0 )")
         a = bin_to_dec( clist , length , 0 )
-        print a
+        print(a)
 
-        print "\nHeadless binary to decimal [1]", b
+        print("\nHeadless binary to decimal [1]", b)
         clist = list( b )
-        print "bin_to_dec( ",clist," , ",length," , 1 )"
+        print("bin_to_dec( ",clist," , ",length," , 1 )")
         a = bin_to_dec( clist , length , 1 )
-        print a
+        print(a)
         pass
     pass
 
-    print "\ntesting alpha encoder"
+    print("\ntesting alpha encoder")
     testlist = ["print encoded_alpha( 17)",\
                 "print encoded_alpha( 9)",
                 "print encoded_alpha( 63)"]
     for t in testlist :
-        print t
-        exec t
+        print(t)
+        exec(t)
         pass
 
-    print "\ntesting alpha decoder"
+    print("\ntesting alpha decoder")
     for i in range (1,23):
-        print "encoding", i
+        print("encoding", i)
         b = encoded_alpha( i )
-        print " ->",b
+        print(" ->",b)
         clist = list(b)
         a = get_alpha_integer( clist )
-        print " ->",a
+        print(" ->",a)
         if i!=a :
-            print "ERROR"
+            print("ERROR")
             pass
         pass
     pass
@@ -516,7 +516,7 @@ def baseconvert(number,fromdigits,todigits):
         neg=0
 
     # make an integer out of the number
-    x=long(0)
+    x=int(0)
     for digit in str(number):
        x = x*len(fromdigits) + fromdigits.index(digit)
 
@@ -603,8 +603,8 @@ class BaseConvert:
         '''
         Private function for doing conversions; returns a list
         '''
-        if True not in [ isinstance(n, x) for x in [long, int, float] ]:
-            raise TypeError, 'parameters must be numbers'
+        if True not in [ isinstance(n, x) for x in [int, int, float] ]:
+            raise TypeError('parameters must be numbers')
         converted = []
         quotient, remainder = divmod(n, b)
         converted.append(remainder)

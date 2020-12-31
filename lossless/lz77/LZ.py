@@ -20,7 +20,7 @@ class node:
         self.substring = substring
         self.pointer = pointer
         if verbose:
-            print pointer, " is pointer for ", `substring`
+            print(pointer, " is pointer for ", repr(substring))
         pass
 
 def find(f, seq):
@@ -100,15 +100,15 @@ def decode( c ):
     return "".join(output)
 
 def test():
-    print "encoding examples:"
+    print("encoding examples:")
     examples = [ "101101010001000000", "000000000000100000000000" ]
     for ex in examples :
-        print ex, encode( list(ex) )
+        print(ex, encode( list(ex) ))
 
-    print "decoding examples:"
+    print("decoding examples:")
     examples = [ "100011101100001000010"]
     for ex in examples :
-        print ex, decode( list(ex) )
+        print(ex, decode( list(ex) ))
 
     import doctest
     verbose=1
