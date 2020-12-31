@@ -1,0 +1,17 @@
+name: shannon
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip
+  - python=3.8
+  - pip:
+    - black
+    - neovim
+    - nbval
+    - pytest
+    - pytest-cov
+    - pytest-subtests
+    - pep517
+    - twine
+    - -r file:requirements.txt
