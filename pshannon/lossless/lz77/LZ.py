@@ -11,7 +11,7 @@ http://www.aims.ac.za/~mackay/itila/
 """
 ## For license statement see  http://www.gnu.org/copyleft/gpl.html
 
-from IntegerCodes import *
+from mackay.integer_codes import *
 
 verbose=0
 class node:
@@ -34,11 +34,11 @@ def encode ( c, pretty=1 ): ## c is a list of characters (0/1) ; p is whether to
     """
     Encode using Lempel-Ziv, as in MacKay (2003) Chapter 6. page 119
     Pretty printing
-    >>> print encode(list("000000000000100000000000"),1)
+    >>> print(encode(list("000000000000100000000000"),1))
     (,0)(1,0)(10,0)(11,0)(010,1)(100,0)(110,0)
 
     Normal printing
-    >>> print encode(list("000000000000100000000000"),0)
+    >>> print(encode(list("000000000000100000000000"),0))
     010100110010110001100
     """
     output =[]
@@ -76,7 +76,7 @@ def printout( pointerstring, latest , pretty=1):
 
 def decode( c ):
     """
-    >>> print decode(list("100011101100001000010"))
+    >>> print(decode(list("100011101100001000010")))
     1011010100010
     """
     output = []
