@@ -26,9 +26,9 @@ import sys
 
 def standard_binary( n  ):
     """ n is the number to convert to binary; returns the standard binary representation
-    >>> print standard_binary( 17 )
+    >>> print(standard_binary( 17 ))
     10001
-    >>> print standard_binary( 6 )
+    >>> print(standard_binary( 6 ))
     110
     """
     return "1"+dec_to_headless( n )
@@ -36,13 +36,13 @@ def standard_binary( n  ):
 def dec_to_bin( n , digits ):
     """ n is the number to convert to binary;  digits is the number of bits you want
     Always prints full number of digits
-    >>> print dec_to_bin( 17 , 9)
+    >>> print(dec_to_bin( 17 , 9))
     000010001
-    >>> print dec_to_bin( 17 , 5)
+    >>> print(dec_to_bin( 17 , 5))
     10001
 
     Will behead the standard binary number if requested
-    >>> print dec_to_bin( 17 , 4)
+    >>> print(dec_to_bin( 17 , 4))
     0001
     """
     if(n<0) :
@@ -51,7 +51,7 @@ def dec_to_bin( n , digits ):
     i=digits-1
     ans=""
     while i>=0 :
-        b = (((1<<i)&n)>0)
+        b = (((1<<i) and n)>0)
         i -= 1
         ans = ans + str(int(b))
         pass
@@ -60,7 +60,7 @@ def dec_to_bin( n , digits ):
 
 def ceillog( n ) : ## ceil( log_2 ( n ))   [Used by LZ.py]
     """
-    >>> print ceillog(3), ceillog(4), ceillog(5)
+    >>> print(ceillog(3), ceillog(4), ceillog(5))
     2 2 3
     """
     assert n>=1
@@ -75,9 +75,9 @@ def to_byte( n, bytesize):
     Self-delimiting code using end of file character.
     Encode integer n>=0 into base B=2**bytesize - 1. Use the all-1 symbol as end-of-file symbol.
     Is this called "Rice Coding"?
-    >>> print to_byte( 10, 2 ) ## 10 = 9 + 0 + 1 --> 01 00 01 11
+    >>> print(to_byte( 10, 2 )) ## 10 = 9 + 0 + 1 --> 01 00 01 11
     01000111
-    >>> print to_byte( 10, 3 ) ## 10 = 7 + 3     --> 001 011 111
+    >>> print(to_byte( 10, 3 )) ## 10 = 7 + 3     --> 001 011 111
     001011111
     """
     assert(bytesize>1) ## this coder does base 3, 7, 15,...
@@ -97,9 +97,9 @@ def from_byte( clist, bytesize):
     """
     Takes a list of binary digits. Returns an integer, and destroys the elements of the
     list that it has read.
-    >>> print from_byte( list("01000111"), 2 ) ## 10 = 9 + 0 + 1 --> 01 00 01 11
+    >>> print(from_byte( list("01000111"), 2 )) ## 10 = 9 + 0 + 1 --> 01 00 01 11
     10
-    >>> print from_byte( list("001011111"), 3 ) ## 10 = 7 + 3     --> 001 011 111
+    >>> print(from_byte( list("001011111"), 3 )) ## 10 = 7 + 3     --> 001 011 111
     10
     """
     assert (len(clist)>=0)
@@ -158,7 +158,7 @@ class Fibonacci:
     """
     Returns fibonacci numbers and caches them for efficiency.
     >>> f = Fibonacci(); [f.calculate(i) for i in range(50)]   # doctest:+ELLIPSIS
-    [1, 1, 2, 3, 5, 8, 13, 21, ..., 12586269025L]
+    [1, 1, 2, 3, 5, 8, 13, 21, ..., 12586269025]
     """
     def __init__(self):
         self.cache={}
@@ -182,7 +182,7 @@ def to_fibonacci( r ) :
     For the Fibonacci code, the implicit distribution is <math>1/n^q</math>, with
     <math>q = 1/\log_2(\gamma) \simeq 1.44</math>, where <math>\gamma</math> is the golden ratio.
 
-    >>> for i in range(1,23): print i,to_fibonacci(i)   # doctest:+ELLIPSIS +NORMALIZE_WHITESPACE
+    >>> for i in range(1,23): print(i,to_fibonacci(i))   # doctest:+ELLIPSIS +NORMALIZE_WHITESPACE
     1  11
     2  011
     3  0011
@@ -196,11 +196,11 @@ def to_fibonacci( r ) :
     11 001011
     12 101011
     ...
-    >>> print to_fibonacci(6), from_fibonacci(to_fibonacci(6))
+    >>> print(to_fibonacci(6), from_fibonacci(to_fibonacci(6)))
     10011 6
-    >>> print to_fibonacci(33), from_fibonacci(to_fibonacci(33))
+    >>> print(to_fibonacci(33), from_fibonacci(to_fibonacci(33)))
     10101011 33
-    >>> print to_fibonacci(18), from_fibonacci(to_fibonacci(18))
+    >>> print(to_fibonacci(18), from_fibonacci(to_fibonacci(18)))
     0001011 18
     """
     i=1
@@ -232,11 +232,11 @@ def from_fibonacci( string ) :
     which has the property that every integer is terminated by "11".
     The decoding of c0c1c2... is c(0)*F(1) + c(1)*F(2) + c(2)*F(3) + ...
     except we ignore the final 1.
-    >>> print from_fibonacci('10101011')
+    >>> print(from_fibonacci('10101011'))
     33
-    >>> print from_fibonacci('0001011')
+    >>> print(from_fibonacci('0001011'))
     18
-    >>> print from_fibonacci('10011')
+    >>> print(from_fibonacci('10011'))
     6
     """
     return from_fibonacci2( list(string) )
@@ -271,13 +271,13 @@ def   encoded_omega ( r ) :
     See
        Information Theory, Inference, and Learning Algorithms. (Ch 7: Codes for Integers)
        http://www.inference.phy.cam.ac.uk/mackay/itila/
-    >>> print encoded_omega(31)
+    >>> print(encoded_omega(31))
     10100111110
-    >>> print encoded_omega(1)
+    >>> print(encoded_omega(1))
     0
-    >>> print encoded_omega(2)
+    >>> print(encoded_omega(2))
     100
-    >>> print encoded_omega(3)
+    >>> print(encoded_omega(3))
     110
     """
     return omega_recursion(r)+"0"
@@ -299,7 +299,7 @@ def get_omega_integer( clist ):
     The answer "0" is returned if the clist is empty.
     An assertion error message will result if the clist ends before we have finished
     reading.
-    >>> for i in [1,3,6,45]: b=encoded_omega(i); cl=list(b); j=get_omega_integer(cl); print i,b,j; assert i==j
+    >>> for i in [1,3,6,45]: b=encoded_omega(i); cl=list(b); j=get_omega_integer(cl); print(i,b,j); assert i==j
     1 0 1
     3 110 3
     6 101100 6
@@ -328,11 +328,11 @@ def   encoded_alpha ( r ) :
     See
        Information Theory, Inference, and Learning Algorithms. (Ch 7: Codes for Integers)
        http://www.inference.phy.cam.ac.uk/mackay/itila/
-    >>> print encoded_alpha( 17)
+    >>> print(encoded_alpha( 17))
     000010001
-    >>> print encoded_alpha( 9)
+    >>> print(encoded_alpha( 9))
     0001001
-    >>> print encoded_alpha( 63)
+    >>> print(encoded_alpha( 63))
     00000111111
     """
     c=0 ; rc =r ; ans=""
@@ -353,7 +353,7 @@ def get_alpha_integer ( clist ) :
     The answer "0" is returned if the clist is empty.
     An assertion error message will result if the clist ends before we have finished
     reading.
-    >>> for i in [1,3,6,42]: b=encoded_alpha(i); cl=list(b); print b,get_alpha_integer(cl)
+    >>> for i in [1,3,6,42]: b=encoded_alpha(i); cl=list(b); print(b,get_alpha_integer(cl))
     1 1
     011 3
     00110 6
@@ -404,10 +404,10 @@ def test():
 
 def oldtest():
     print("testing dec_to_bin")
-    testlist = ["print dec_to_bin( 17 , 9)",\
-                "print dec_to_bin( 17 , 6)",\
-                "print dec_to_bin( 17 , 5)",\
-                "print dec_to_bin( 17 , 4)"]
+    testlist = ["print(dec_to_bin( 17 , 9))",\
+                "print(dec_to_bin( 17 , 6))",\
+                "print(dec_to_bin( 17 , 5))",\
+                "print(dec_to_bin( 17 , 4))"]
     for t in testlist :
         print(t)
         exec(t)
@@ -432,9 +432,9 @@ def oldtest():
     pass
 
     print("\ntesting alpha encoder")
-    testlist = ["print encoded_alpha( 17)",\
-                "print encoded_alpha( 9)",
-                "print encoded_alpha( 63)"]
+    testlist = ["print(encoded_alpha( 17))",\
+                "print(encoded_alpha( 9))",
+                "print(encoded_alpha( 63))"]
     for t in testlist :
         print(t)
         exec(t)
