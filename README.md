@@ -3,7 +3,7 @@
 ![]( https://imgs.xkcd.com/comics/digital_data.png)
 
 This repository is to serve as a collection of compression algorithms implemented in **Python** and/or
-**Python** as a learning exercise.
+**Rust** as a learning exercise.
 
 ### References and Resources
 
