@@ -1,0 +1,17 @@
+jax
+jaxlib
+jupyter-book
+matplotlib
+mdanalysis
+mordred[full]
+moviepy
+networkx
+numpy
+pandas
+Pillow
+pydot
+seaborn
+sklearn
+sphinxcontrib-bibtex<2.0.0
+tabulate
+tensorflow
