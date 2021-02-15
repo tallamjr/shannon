@@ -5,6 +5,20 @@
 This repository is to serve as a collection of compression algorithms implemented in **Python** and/or
 **Rust** as a learning exercise.
 
+#### Book
+
+In addition, I am putting together (very work-in-progress) book where I will jot down concepts and
+toy problems I come across, which will hopefully improve my understandings.  This is built with
+[Jupyter-Book](https://jupyterbook.org/) using this [website](https://whitead.github.io/dmol-book/)
+as inspiration.
+
+This can build locally with:
+
+```bash
+$ cd book && jupyterbook build . && open _build/html/index.html
+```
+Alternatively, visit www.compression-cookbook.com
+
 ### References and Resources
 
 * [Zstandard Blog post](https://engineering.fb.com/2018/12/19/core-data/zstandard/)
@@ -22,3 +36,5 @@ This repository is to serve as a collection of compression algorithms implemente
 * [SO: Difference: LZ77 vs. LZ4 vs. LZ4HC (compression algorithms)?](https://stackoverflow.com/questions/28635496/difference-lz77-vs-lz4-vs-lz4hc-compression-algorithms/28635890#28635890)
 * [Yann Collet explains zstd](https://www.youtube.com/watch?v=jl9ncLcMlVY&t=95s)
 * [Leonardo's Blog (Mr. MPEG)](https://blog.chiariglione.org/)
+* [Encoder Complexity Hits the Wall!](https://www.linkedin.com/pulse/encoder-complexity-hits-wall-david-ronca/)
+* [An Overview of H.264 Advanced Video Coding](https://www.vcodex.com/an-overview-of-h264-advanced-video-coding/)
